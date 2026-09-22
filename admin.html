@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Painel | Barbearia Silva</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="admin.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script></head>
+<body>
+<div class="admin-wrap">
+<header class="admin-head"><div class="brand"><span class="brand-mark">S</span><span><b>PAINEL</b><strong>BARBEARIA SILVA</strong></span></div><a class="btn btn-ghost" href="index.html">Ver site ↗</a></header>
+<main>
+<div id="login" class="login-card"><span class="kicker">ÁREA DO BARBEIRO</span><h1>Entrar no painel.</h1><p>Use o e-mail e a senha do usuário administrador criado no Supabase Auth.</p><input id="email" type="email" placeholder="E-mail"><input id="password" type="password" placeholder="Senha"><button id="loginBtn" class="btn btn-primary">Entrar</button><small id="loginMsg"></small></div>
+<div id="dashboard" class="hidden">
+<div class="dash-top"><div><span class="kicker">AGENDA</span><h1>Controle do dia.</h1><p id="todayLabel"></p></div><div class="toggle-card"><span>Agenda aberta</span><button id="toggleOpen" class="switch on"></button><input id="closeTime" type="time" value="19:30"><button id="saveHours" class="btn btn-ghost">Salvar horário</button></div></div>
+<div class="filters"><input id="adminDate" type="date"><button class="btn btn-ghost" id="refresh">Atualizar</button><button class="btn btn-ghost" id="logout">Sair</button></div>
+<div id="adminList" class="admin-list"></div>
+</div></main>
+</div><script src="admin.js"></script></body></html>

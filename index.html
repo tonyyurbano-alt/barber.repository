@@ -1,672 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Barbearia Silva | Estilo, Precisão e Atitude</title>
-    <meta name="description" content="Barbearia Silva - Cortes masculinos e sobrancelha. Agende seu horário pelo WhatsApp.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #05080d;
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1150px;
-            margin: auto;
-        }
-
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(3, 6, 10, 0.95);
-            border-bottom: 1px solid #12304d;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: #008cff;
-        }
-
-        .menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .menu a {
-            color: #ddd;
-            transition: .3s;
-        }
-
-        .menu a:hover {
-            color: #008cff;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #008cff;
-            color: white;
-            padding: 13px 22px;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: .3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #006dcc;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 140, 255, .25);
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            padding-top: 75px;
-            display: flex;
-            align-items: center;
-            background:
-                radial-gradient(circle at 75% 45%, rgba(0, 119, 255, .18), transparent 30%),
-                linear-gradient(120deg, #030507 40%, #071321 100%);
-        }
-
-        .hero-content {
-            max-width: 650px;
-        }
-
-        .tag {
-            color: #008cff;
-            letter-spacing: 4px;
-            font-weight: bold;
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: clamp(48px, 8vw, 90px);
-            line-height: .95;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #008cff;
-        }
-
-        .hero p {
-            color: #bbb;
-            max-width: 580px;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .features {
-            display: flex;
-            gap: 30px;
-            margin-top: 45px;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            border-left: 2px solid #008cff;
-            padding-left: 15px;
-        }
-
-        .feature strong {
-            display: block;
-            color: #fff;
-        }
-
-        .feature small {
-            color: #888;
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 90px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 40px;
-        }
-
-        .section-title span {
-            color: #008cff;
-        }
-
-        .section-title p {
-            color: #888;
-            margin-top: 10px;
-        }
-
-        /* SERVIÇOS */
-        .services {
-            background: #080d13;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .card {
-            background: #0b121a;
-            border: 1px solid #123451;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: .3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #008cff;
-            box-shadow: 0 10px 35px rgba(0, 140, 255, .1);
-        }
-
-        .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #999;
-            margin-bottom: 20px;
-        }
-
-        .price {
-            color: #008cff;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        /* SOBRE */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-box {
-            background: linear-gradient(145deg, #0b121a, #05080d);
-            border: 1px solid #123451;
-            border-radius: 15px;
-            min-height: 330px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .about-logo {
-            font-size: 45px;
-            font-weight: 900;
-        }
-
-        .about-logo span {
-            color: #008cff;
-        }
-
-        .about-text h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
-
-        .about-text h2 span {
-            color: #008cff;
-        }
-
-        .about-text p {
-            color: #aaa;
-            margin-bottom: 15px;
-        }
-
-        /* GALERIA */
-        .gallery {
-            background: #080d13;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .gallery-item {
-            height: 230px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #0d1722, #020406);
-            border: 1px solid #123451;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            font-weight: bold;
-        }
-
-        /* CTA */
-        .cta {
-            text-align: center;
-            background:
-                radial-gradient(circle, rgba(0, 140, 255, .15), transparent 60%),
-                #05080d;
-            border-top: 1px solid #123451;
-            border-bottom: 1px solid #123451;
-        }
-
-        .cta h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            color: #aaa;
-            margin-bottom: 25px;
-        }
-
-        /* CONTATO */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .contact-card {
-            background: #0b121a;
-            border: 1px solid #123451;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .contact-card h3 {
-            color: #008cff;
-            margin-bottom: 10px;
-        }
-
-        .contact-card p {
-            color: #aaa;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 35px 0;
-            text-align: center;
-            background: #020406;
-            border-top: 1px solid #123451;
-        }
-
-        footer .logo {
-            margin-bottom: 10px;
-        }
-
-        footer p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            .menu {
-                display: none;
-            }
-
-            .header-btn {
-                display: none;
-            }
-
-            .hero {
-                text-align: center;
-            }
-
-            .hero-content {
-                margin: auto;
-            }
-
-            .features {
-                justify-content: center;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Barbearia Silva | Jarinu - SP</title>
+  <meta name="description" content="Barbearia Silva — cortes, barba e sobrancelha em Nova Trieste, Jarinu-SP. Agende seu horário pelo WhatsApp.">
+  <meta name="theme-color" content="#05070c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💈%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <div id="intro" class="intro">
+    <div class="intro-glow"></div>
+    <div class="intro-logo">S</div>
+    <div class="intro-title">BARBEARIA <span>SILVA</span></div>
+    <div class="intro-line"></div>
+    <p>Estilo. Precisão. Presença.</p>
+  </div>
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="#inicio" class="logo">
-                BARBEARIA <span>SILVA</span>
-            </a>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio"><span class="brand-mark">S</span><span><b>BARBEARIA</b><strong>SILVA</strong></span></a>
+    <nav>
+      <a href="#servicos">Serviços</a><a href="#agenda">Agendar</a><a href="#sobre">Sobre</a><a href="#local">Local</a>
+    </nav>
+    <a class="header-wa" id="headerWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </header>
 
-            <ul class="menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-
-            <a class="btn header-btn"
-               href="https://wa.me/5511999999999"
-               target="_blank">
-                Agendar
-            </a>
-        </nav>
-    </div>
-</header>
-
-
-<!-- INÍCIO -->
-<section class="hero" id="inicio">
-    <div class="container">
-        <div class="hero-content">
-
-            <div class="tag">
-                ESTILO • PRECISÃO • CONFIANÇA
-            </div>
-
-            <h1>
-                BARBEARIA<br>
-                <span>SILVA</span>
-            </h1>
-
-            <p>
-                Mais que um corte. É estilo, cuidado e confiança.
-                Tenha uma experiência de barbearia com atendimento
-                profissional e ambiente confortável.
-            </p>
-
-            <a class="btn"
-               href="https://wa.me/5511999999999"
-               target="_blank">
-                Agendar pelo WhatsApp
-            </a>
-
-            <div class="features">
-                <div class="feature">
-                    <strong>✂ Cortes</strong>
-                    <small>Estilo e precisão</small>
-                </div>
-
-                <div class="feature">
-                    <strong>★ Sobrancelha</strong>
-                    <small>Design masculino</small>
-                </div>
-
-                <div class="feature">
-                    <strong>✓ Qualidade</strong>
-                    <small>Atendimento personalizado</small>
-                </div>
-            </div>
-
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span id="statusDot" class="status-dot"></span><span id="statusText">VERIFICANDO...</span><span class="live-clock" id="liveClock">--:--:--</span></div>
+        <h1>Seu estilo começa<br><em>na cadeira.</em></h1>
+        <p>Corte preciso, barba alinhada e atendimento de verdade. Agende seu horário em poucos segundos.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#agenda">Agendar horário <span>→</span></a>
+          <a class="btn btn-ghost" id="heroWa" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
-    </div>
-</section>
+        <div class="hero-meta"><span>08:00 — 19:30</span><i></i><span>Nova Trieste · Jarinu-SP</span></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top"><span>ATENDIMENTO</span><span class="pulse"></span></div>
+        <div class="hero-number">01</div>
+        <h3>Agenda inteligente</h3>
+        <p>Os horários são calculados automaticamente conforme o serviço escolhido e o tempo real.</p>
+        <div class="mini-stat"><span>Próximo horário</span><b id="nextSlot">--:--</b></div>
+      </div>
+    </section>
 
+    <section class="ticker"><span>BARBEARIA SILVA</span><i>✦</i><span>JARINU — SP</span><i>✦</i><span>ATENDIMENTO COM HORA MARCADA</span><i>✦</i><span>ESTILO SEM COMPLICAÇÃO</span></section>
 
-<!-- SERVIÇOS -->
-<section class="services" id="servicos">
+    <section id="servicos" class="section">
+      <div class="section-head"><div><span class="kicker">SERVIÇOS</span><h2>Escolha seu <em>momento.</em></h2></div><p>Você escolhe o serviço. A agenda calcula o tempo e mostra somente horários possíveis.</p></div>
+      <div id="serviceGrid" class="service-grid"></div>
+    </section>
 
-    <div class="container">
-
-        <div class="section-title">
-            <h2>NOSSOS <span>SERVIÇOS</span></h2>
-            <p>Qualidade em cada detalhe.</p>
+    <section id="agenda" class="booking-section">
+      <div class="booking-shell">
+        <div class="section-head compact"><div><span class="kicker">AGENDAMENTO</span><h2>Reserve seu <em>horário.</em></h2></div><div class="open-chip"><span id="bookingStatusDot"></span><span id="bookingStatus">ABERTA</span></div></div>
+        <div class="steps">
+          <div class="step active" data-step="1"><span>1</span> Serviço</div><div class="step" data-step="2"><span>2</span> Data e hora</div><div class="step" data-step="3"><span>3</span> Seus dados</div>
         </div>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">✂️</div>
-                <h3>Corte Masculino</h3>
-                <p>
-                    Corte moderno, degradê, social e outros estilos.
-                </p>
-                <div class="price">R$ 35,00</div>
-            </div>
-
-            <div class="card">
-                <div class="icon">★</div>
-                <h3>Sobrancelha</h3>
-                <p>
-                    Design e alinhamento para completar seu visual.
-                </p>
-                <div class="price">R$ 15,00</div>
-            </div>
-
+        <div id="bookingPanel">
+          <div class="booking-step" data-panel="1">
+            <div class="booking-grid" id="bookingServices"></div>
+            <button class="btn btn-primary wide" id="toStep2">Continuar <span>→</span></button>
+          </div>
+          <div class="booking-step hidden" data-panel="2">
+            <div class="date-row"><label>Data<input id="dateInput" type="date"></label><label>Horário<select id="timeInput"><option value="">Escolha um horário</option></select></label></div>
+            <div id="slotMessage" class="slot-message"></div>
+            <div class="booking-summary" id="summary2"></div>
+            <div class="nav-actions"><button class="btn btn-ghost" data-back="1">← Voltar</button><button class="btn btn-primary" id="toStep3">Continuar <span>→</span></button></div>
+          </div>
+          <div class="booking-step hidden" data-panel="3">
+            <div class="form-grid"><label>Nome<input id="nameInput" maxlength="80" placeholder="Seu nome"></label><label>WhatsApp<input id="phoneInput" inputmode="tel" maxlength="20" placeholder="(11) 99999-9999"></label></div>
+            <label>Observação (opcional)<textarea id="noteInput" maxlength="300" placeholder="Ex.: preferência de corte..."></textarea></label>
+            <div class="booking-summary" id="summary3"></div>
+            <div class="nav-actions"><button class="btn btn-ghost" data-back="2">← Voltar</button><button class="btn btn-primary" id="confirmBooking">Confirmar agendamento <span>✓</span></button></div>
+          </div>
         </div>
-    </div>
-</section>
-
-
-<!-- SOBRE -->
-<section id="sobre">
-
-    <div class="container">
-
-        <div class="about">
-
-            <div class="about-box">
-                <div class="about-logo">
-                    BARBEARIA<br>
-                    <span>SILVA</span>
-                </div>
-            </div>
-
-            <div class="about-text">
-
-                <h2>
-                    SOBRE <span>NÓS</span>
-                </h2>
-
-                <p>
-                    A Barbearia Silva foi criada para oferecer
-                    um atendimento de qualidade em um ambiente
-                    moderno, confortável e tranquilo.
-                </p>
-
-                <p>
-                    Nosso objetivo é valorizar o seu estilo e
-                    fazer com que cada cliente saia satisfeito
-                    com o resultado.
-                </p>
-
-                <p>
-                    Aqui, cada detalhe importa.
-                </p>
-
-            </div>
-
+        <div id="successPanel" class="success-panel hidden">
+          <div class="success-icon">✓</div><h3>Horário solicitado!</h3><p id="successText"></p>
+          <a id="successWa" class="btn btn-primary" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp <span>↗</span></a>
+          <button class="btn btn-ghost" id="newBooking">Fazer outro agendamento</button>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <section id="sobre" class="section about">
+      <div class="about-panel"><span class="kicker">BARBEARIA SILVA</span><h2>Um atendimento<br><em>de homem para homem.</em></h2><p>Um espaço para cuidar do visual, trocar ideia e sair se sentindo bem. Higiene, precisão e atenção aos detalhes em cada atendimento.</p><div class="about-points"><span>✦ Equipamentos higienizados</span><span>✦ Produtos de qualidade</span><span>✦ Atendimento com hora marcada</span></div></div>
+      <div class="quote-card"><span>“</span><p>O corte certo muda mais do que o visual. Muda a presença.</p><small>BARBEARIA SILVA · JARINU</small></div>
+    </section>
 
-</section>
+    <section id="local" class="location section">
+      <div class="location-copy"><span class="kicker">ONDE ESTAMOS</span><h2>Nova Trieste,<br><em>Jarinu — SP.</em></h2><p>Rua Milão, 539 — Nova Trieste, Jarinu - SP</p><div class="location-actions"><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Rua%20Mil%C3%A3o%20539%2C%20Nova%20Trieste%2C%20Jarinu%20SP" target="_blank" rel="noopener">Abrir no Maps ↗</a><a class="btn btn-ghost" href="https://www.instagram.com/_silva.barbearia_/" target="_blank" rel="noopener">@_silva.barbearia_</a></div></div>
+      <div class="map-card"><div class="map-grid"></div><div class="map-pin">✦</div><div class="map-label">Rua Milão, 539<br><small>Nova Trieste · Jarinu-SP</small></div></div>
+    </section>
+  </main>
 
-
-<!-- GALERIA -->
-<section class="gallery" id="galeria">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>NOSSA <span>GALERIA</span></h2>
-            <p>Alguns espaços reservados para mostrar nossos trabalhos.</p>
-        </div>
-
-        <div class="gallery-grid">
-
-            <div class="gallery-item">
-                FOTO DO CORTE
-            </div>
-
-            <div class="gallery-item">
-                FOTO DO CORTE
-            </div>
-
-            <div class="gallery-item">
-                FOTO DO CORTE
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- AGENDAMENTO -->
-<section class="cta">
-
-    <div class="container">
-
-        <h2>AGENDE SEU HORÁRIO</h2>
-
-        <p>
-            Clique abaixo e fale diretamente com a Barbearia Silva.
-        </p>
-
-        <a class="btn"
-           href="https://wa.me/5511999999999"
-           target="_blank">
-            Agendar pelo WhatsApp
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- CONTATO -->
-<section id="contato">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>FALE <span>CONOSCO</span></h2>
-            <p>Entre em contato e agende seu horário.</p>
-        </div>
-
-        <div class="contact-grid">
-
-            <div class="contact-card">
-                <h3>📍 Endereço</h3>
-                <p>
-                    Seu endereço aqui<br>
-                    Sua cidade - SP
-                </p>
-            </div>
-
-            <div class="contact-card">
-                <h3>📱 WhatsApp</h3>
-                <p>
-                    (11) 99999-9999
-                </p>
-            </div>
-
-            <div class="contact-card">
-                <h3>📸 Instagram</h3>
-                <p>
-                    @barbeariasilva
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    <div class="container">
-
-        <div class="logo">
-            BARBEARIA <span>SILVA</span>
-        </div>
-
-        <p>
-            Estilo é questão de atitude.
-        </p>
-
-        <p>
-            © 2026 Barbearia Silva. Todos os direitos reservados.
-        </p>
-
-    </div>
-
-</footer>
-
+  <footer><div class="footer-brand"><span class="brand-mark">S</span><span><b>BARBEARIA</b><strong>SILVA</strong></span></div><div>© <span id="year"></span> Barbearia Silva</div><div>Jarinu · SP</div></footer>
+  <a class="floating-wa" id="floatingWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">⌕</a>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
