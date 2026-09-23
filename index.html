@@ -3,204 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barbearia Silva | Jundiaí SP - Agenda Inteligente</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<title>Barbearia Silva | Rua Milão 539 - Nova Trieste Jarinu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#060A14;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
-:root{--blue:#2F6BFF;--card:#111625;--border:rgba(255,255,255,0.08);--bg:#060A14}
-.hero{position:relative;min-height:88vh;background:radial-gradient(ellipse at 15% 40%, rgba(47,107,255,0.32) 0%, rgba(12,20,50,0.8) 42%, var(--bg) 72%);padding:18px 28px 40px;overflow:hidden}
-.nav{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
-.logo{display:flex;align-items:center;gap:8px;font-weight:900;letter-spacing:1px}
-.logo.s{width:28px;height:28px;background:var(--blue);border-radius:7px;display:grid;place-items:center;font-weight:900}
-.menu{display:flex;gap:22px;font-size:13px;color:#9CA3AF}
-.hero-main{max-width:1300px;margin:70px auto 0;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center;position:relative;z-index:2}
+body{background:#0B1330;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+:root{--blue:#3B82FF;--border:rgba(99,137,255,0.22)}
+.hero{position:relative;min-height:94vh;background:radial-gradient(ellipse at 10% 35%, rgba(59,130,255,0.55) 0%, transparent 62%),radial-gradient(ellipse at 90% 15%, rgba(59,130,255,0.22) 0%, transparent 45%),linear-gradient(180deg,#142262 0%,#0B1330 78%);padding:18px 28px 50px;overflow:hidden}
+.nav{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:3}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-family:'Space Grotesk',sans-serif;font-size:16px}
+.logo .s{width:32px;height:32px;background:var(--blue);border-radius:9px;display:grid;place-items:center;box-shadow:0 0 22px rgba(59,130,255,0.7)}
+.menu{display:flex;gap:26px;font-size:13px;color:#8FA0C8}
+.hero-main{max-width:1300px;margin:80px auto 0;display:grid;grid-template-columns:1.25fr 0.85fr;gap:50px;align-items:center;position:relative;z-index:2}
 @media(max-width:900px){.hero-main{grid-template-columns:1fr}.menu{display:none}}
-.badge{display:flex;align-items:center;gap:8px;color:#7EA0FF;font-size:10px;letter-spacing:2px;font-weight:700}
-.dot{width:6px;height:6px;background:#22C55E;border-radius:50%;box-shadow:0 0 8px #22C55E}
-.hero h1{font-size:62px;line-height:0.95;font-weight:900;letter-spacing:-2px;margin-top:14px}
-@media(max-width:600px){.hero h1{font-size:42px}}
-.hero h1 span{color:var(--blue)}
-.sub{color:#9CA3AF;font-size:13px;max-width:340px;margin-top:14px;line-height:1.5}
-.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-.btn-blue{background:var(--blue);color:#fff;border:0;padding:12px 18px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer;box-shadow:0 0 20px rgba(47,107,255,0.4)}
-.btn-ghost{background:rgba(255,255,255,0.07);border:1px solid var(--border);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600;font-size:12px;cursor:pointer}
-.info{margin-top:20px;display:flex;gap:10px;font-size:10px;color:#6B7280;letter-spacing:1px}
-.card{background:linear-gradient(180deg, rgba(27,33,60,0.9) 0%, rgba(17,22,37,0.95) 100%);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);position:relative}
-.card small{color:#7EA0FF;font-size:10px;letter-spacing:2px;font-weight:700}
-.card h3{font-size:48px;font-weight:900;color:#3A4A7A;margin-top:4px}
-.card strong{display:block;margin-top:2px;font-size:18px}
-.card p{color:#8A92B0;font-size:12px;margin-top:10px;line-height:1.5}
-.card-foot{margin-top:18px;display:flex;justify-content:space-between;align-items:center;color:#5A6585;font-size:10px}
-.fab{width:36px;height:36px;background:var(--blue);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 20px rgba(47,107,255,0.6)}
-.green-dot{position:absolute;top:18px;right:18px;width:8px;height:8px;background:#22C55E;border-radius:50%;box-shadow:0 0 10px #22C55E}
-.sec{padding:75px 28px;max-width:1300px;margin:0 auto;position:relative}
-.tag{color:var(--blue);font-size:10px;letter-spacing:3px;font-weight:800;margin-bottom:12px}
-.h2{font-size:34px;font-weight:900;line-height:1.1}
-.p{color:#9CA3AF;line-height:1.7;max-width:720px;margin-top:12px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.badge{display:flex;align-items:center;gap:10px;color:#8FBBFF;font-size:10px;letter-spacing:2.5px;font-weight:800;background:rgba(59,130,255,0.14);border:1px solid rgba(59,130,255,0.3);padding:7px 14px;border-radius:999px;width:fit-content}
+.dot{width:7px;height:7px;background:#22C55E;border-radius:50%;box-shadow:0 0 12px #22C55E;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.hero h1{font-size:68px;line-height:0.90;font-weight:900;letter-spacing:-2.8px;margin-top:18px;font-family:'Space Grotesk',sans-serif}
+.hero h1 span{background:linear-gradient(90deg,#3B82FF,#8FB5FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@media(max-width:600px){.hero h1{font-size:44px}}
+.sub{color:#A8B7D8;font-size:14px;max-width:380px;margin-top:16px;line-height:1.6}
+.btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn-blue{background:linear-gradient(180deg,#3B82FF,#285FCC);color:#fff;border:0;padding:14px 24px;border-radius:12px;font-weight:800;font-size:12.5px;cursor:pointer;box-shadow:0 12px 30px rgba(59,130,255,0.45);transition:.2s}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(59,130,255,0.6)}
+.btn-ghost{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#fff;padding:14px 24px;border-radius:12px;font-weight:600;font-size:12.5px;cursor:pointer;backdrop-filter:blur(12px)}
+.card{position:relative;background:linear-gradient(180deg, rgba(28,42,92,0.95) 0%, rgba(19,30,66,0.98) 100%);border:1px solid rgba(124,156,255,0.25);border-radius:26px;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.18)}
+.sec{padding:85px 28px;max-width:1300px;margin:0 auto;position:relative}
+.tag{color:var(--blue);font-size:10px;letter-spacing:3.5px;font-weight:800;margin-bottom:14px}
+.h2{font-size:38px;font-weight:900;line-height:1.05;font-family:'Space Grotesk',sans-serif;letter-spacing:-1px}
+.p{color:#9AA9CB;line-height:1.75;max-width:780px;margin-top:14px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-.box{aspect-ratio:1/1;background:var(--card);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:14px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.box:hover{border-color:rgba(47,107,255,0.4)}
-.box.active{border-color:var(--blue);box-shadow:0 0 25px rgba(47,107,255,.28);background:#151A2E}
-.plasma::after{content:'';position:absolute;inset:-2px;background:linear-gradient(100deg,transparent 20%,rgba(47,107,255,.7) 50%,transparent 80%);transform:translateX(-120%);animation:shine 2.6s infinite}
-@keyframes shine{100%{transform:translateX(120%)}}
-.rays{position:relative;overflow:hidden}
-.rays::before{content:'';position:absolute;top:-140px;left:50%;width:135%;height:450px;background:radial-gradient(ellipse at center, rgba(47,107,255,.18) 0%, transparent 70%);transform:translateX(-50%);pointer-events:none}
-.input{width:100%;background:#0E1322;border:1px solid var(--border);border-radius:12px;padding:14px;color:#fff;margin-top:10px;font-size:13px}
-.input:focus{outline:none;border-color:var(--blue)}
-.disabled{opacity:0.3;pointer-events:none;text-decoration:line-through}
+.cyber{aspect-ratio:1/1;background:linear-gradient(180deg,#1A2752,#121C3A);border:1px solid var(--border);border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px;cursor:pointer;position:relative;overflow:hidden;transition:.25s}
+.cyber:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 18px 40px rgba(59,130,255,0.32)}
+.cyber.active{border-color:var(--blue);box-shadow:0 0 32px rgba(59,130,255,0.45);background:linear-gradient(180deg,#203168,#172448)}
+.cyber-icon{width:58px;height:58px;border:1px solid rgba(99,137,255,0.35);border-radius:15px;display:grid;place-items:center;background:rgba(59,130,255,0.1);margin-bottom:14px}
+.cyber b{font-size:13px}.cyber small{color:#7B8AB0;font-size:10px;margin-top:5px}
+.plasma::after{content:'';position:absolute;inset:-2px;background:linear-gradient(100deg,transparent 15%,rgba(120,190,255,0.85) 50%,transparent 85%);transform:translateX(-130%);animation:shine 3s infinite}
+@keyframes shine{100%{transform:translateX(130%)}}
+.input{width:100%;background:#101B3E;border:1px solid rgba(99,137,255,0.25);border-radius:12px;padding:14px;color:#fff;margin-top:11px;font-size:13px}
+.input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,255,0.18)}
+footer{border-top:1px solid rgba(99,137,255,0.18);padding:50px 28px;background:#070D26;text-align:center}
 </style>
 </head>
 <body>
 
-<div class="hero rays">
+<div class="hero">
   <div class="nav">
     <div class="logo"><div class="s">S</div> SILVA</div>
     <div class="menu"><span>Serviços</span><span>Agendar</span><span>Sobre</span><span>Local</span></div>
   </div>
   <div class="hero-main">
     <div>
-      <div class="badge"><div class="dot"></div> ABERTA AGORA <span id="clock"></span></div>
+      <div class="badge"><div class="dot"></div> ABERTA AGORA <span id="clock" style="margin-left:6px;color:#fff"></span></div>
       <h1>Seu estilo<br>começa<br><span>na cadeira.</span></h1>
-      <div class="sub">Corte preciso, barba alinhada e atendimento de verdade. Agende seu horário em poucos segundos.</div>
+      <div class="sub">Corte preciso, barba alinhada e atendimento de verdade em Nova Trieste. Agende seu horário em poucos segundos com agenda inteligente.</div>
       <div class="btns">
         <button class="btn-blue" onclick="document.getElementById('agendar').scrollIntoView({behavior:'smooth'})">Agendar horário →</button>
-        <button class="btn-ghost" onclick="window.open('https://wa.me/5511999999999','_blank')">Falar no WhatsApp</button>
+        <button class="btn-ghost" onclick="window.open('https://wa.me/5511944847179','_blank')">Falar no WhatsApp</button>
       </div>
-      <div class="info"><span>08:00 - 18:00</span> • <span>Nova Trieste - Jundiaí SP</span></div>
+      <div style="margin-top:22px;color:#7B8AB0;font-size:10px;letter-spacing:1.2px">RUA MILÃO 539, NOVA TRIESTE • JARINU SP • @_silva.barbearia_</div>
     </div>
     <div class="card">
-      <div class="green-dot"></div>
-      <small>ATENDIMENTO</small>
-      <h3>01</h3>
-      <strong>Agenda Inteligente</strong>
-      <p>Os horários são calculados automaticamente conforme o serviço escolhido e o tempo real. Sistema integrado com Supabase.</p>
-      <div class="card-foot"><span id="nextSlot">Próximo horário: 09:00</span><div class="fab">◐</div></div>
+      <div style="position:absolute;top:20px;right:20px;width:10px;height:10px;background:#22C55E;border-radius:50%;box-shadow:0 0 14px #22C55E"></div>
+      <small style="color:#8FBBFF;letter-spacing:3px;font-weight:800">ATENDIMENTO PREMIUM</small>
+      <h3 style="font-size:56px;font-weight:900;color:#2F4080;margin-top:6px">01</h3>
+      <strong style="font-size:20px">Agenda Inteligente</strong>
+      <p style="color:#9AA9CB;font-size:12.5px;margin-top:10px;line-height:1.6">Horários calculados automaticamente conforme serviço. Integrado com Supabase + WhatsApp 11 94484-7179</p>
+      <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center"><span style="color:#7B8AB0;font-size:11px" id="nextSlot">Próximo: 09:00</span><div style="width:40px;height:40px;background:var(--blue);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 24px rgba(59,130,255,0.7)">◐</div></div>
     </div>
   </div>
 </div>
 
 <div class="sec">
   <div class="tag">SOBRE NÓS - NO COMEÇO COMO PEDIU</div>
-  <div class="h2">Qualidade que você vê no espelho, confiança que você sente o dia todo</div>
-  <div class="p">Não é só barbearia. É acabamento impecável, toalha quente, atendimento sem pressa e pontualidade de verdade. Aqui cada corte é feito com técnica, cada cliente sai com o estilo alinhado. Tradição que respeita seu tempo e estilo que destaca sua personalidade. Mais de 500 clientes satisfeitos em Jundiaí.</div>
+  <div class="h2">Qualidade que você vê no espelho,<br>confiança que você sente o dia todo</div>
+  <div class="p">Existem muitas barbearias, mas nos focamos no que realmente importa para você: <b style="color:#fff">Atendimento de Amigo para Amigo</b>. Não é só barbearia. É acabamento impecável, toalha quente, atendimento sem pressa e pontualidade de verdade. Aqui em Nova Trieste - Jarinu, cada corte é feito com técnica. 373 seguidores no @_silva.barbearia_ - Por @_aandersonjose_ - 5 de março de 2026.</div>
 </div>
 
 <div class="sec">
-  <div class="tag">CORTES EM DESTAQUE - COM PLASMA LEVE</div>
+  <div class="tag">CORTES EM DESTAQUE - DESIGN CYBER SEM EMOJI</div>
   <div class="h2">Os mais pedidos da Silva</div>
   <div class="grid">
-    <div class="box plasma"><div style="font-size:32px">💈</div><b style="margin-top:8px">Fade Moderno</b><small style="color:#6B7280">Degradê perfeito</small></div>
-    <div class="box plasma"><div style="font-size:32px">✂️</div><b style="margin-top:8px">Social Clássico</b><small style="color:#6B7280">Alinhado</small></div>
-    <div class="box plasma"><div style="font-size:32px">🔥</div><b style="margin-top:8px">Barba Terapia</b><small style="color:#6B7280">Contorno + hidratação</small></div>
-    <div class="box plasma"><div style="font-size:32px">✨</div><b style="margin-top:8px">Corte + Barba</b><small style="color:#6B7280">Combo completo</small></div>
+    <div class="cyber plasma"><div class="cyber-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><path d="M6 6c0-2 4-3 6 0"/><path d="M6 6v11c0 2.5 2.5 4 6 4s6-1.5 6-4V6"/><path d="M6 11h12"/></svg></div><b>Fade Moderno</b><small>Degradê perfeito</small></div>
+    <div class="cyber plasma"><div class="cyber-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><circle cx="12" cy="7" r="3.5"/><path d="M5.5 20c0-3.5 3.5-5.5 6.5-5.5S18.5 16.5 18.5 20"/></svg></div><b>Social Clássico</b><small>Alinhado premium</small></div>
+    <div class="cyber plasma"><div class="cyber-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><path d="M12 3c-3.5 0-6.5 2.8-6.5 6.5 0 4.5 6.5 10.5S18.5 14 18.5 9.5C18.5 5.8 15.5 3 12 3z"/><circle cx="12" cy="9.5" r="2"/></svg></div><b>Barba Terapia</b><small>Contorno + vapor</small></div>
+    <div class="cyber plasma"><div class="cyber-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><path d="M12 2l2.7 5.5H21l-5.2 3.8 2 6.2L12 14.2 6.2 17.5l2-6.2L3 7.5h6.3z"/></svg></div><b>Combo Silva</b><small>Corte + Barba</small></div>
   </div>
 </div>
 
 <div class="sec">
-  <div class="tag">SERVIÇOS</div>
+  <div class="tag">SERVIÇOS PREMIUM</div>
   <div class="h2">Tabela de serviços</div>
   <div class="grid">
-    <div class="box" data-service="Corte Máquina|40|30"><b>Corte Máquina</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$40</span><small>30min</small></div>
-    <div class="box" data-service="Barba Completa|35|25"><b>Barba Completa</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$35</span><small>25min</small></div>
-    <div class="box" data-service="Corte + Barba|65|50"><b>Corte + Barba</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$65</span><small>50min</small></div>
-    <div class="box" data-service="Acabamento|15|10"><b>Acabamento</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$15</span><small>10min</small></div>
+    <div class="cyber" data-service="Corte Máquina|40|30"><div class="cyber-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><rect x="3" y="7" width="10" height="10" rx="2.5"/><path d="M13 10h8v4h-8z"/></svg></div><b>Corte Máquina</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$40</span><small>30min</small></div>
+    <div class="cyber" data-service="Barba Completa|35|25"><div class="cyber-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><path d="M7 17c0-2.5 2.5-4.5 5-4.5S17 14.5 17 17"/><path d="M8.5 11c0-1.8 1.5-3.5 3.5-3.5S15.5 9.2 15.5 11"/></svg></div><b>Barba Completa</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$35</span><small>25min</small></div>
+    <div class="cyber" data-service="Corte + Barba|65|50"><div class="cyber-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><circle cx="12" cy="12" r="7"/><path d="M9 12h6M12 9v6"/></svg></div><b>Corte + Barba</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$65</span><small>50min</small></div>
+    <div class="cyber" data-service="Acabamento|15|10"><div class="cyber-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8FBBFF" stroke-width="1.5"><path d="M3 15l4-6 4 6 4-6 4 6"/><path d="M2 19h20"/></svg></div><b>Acabamento</b><span style="color:var(--blue);font-weight:800;margin-top:6px">R$15</span><small>10min</small></div>
   </div>
 </div>
 
-<div id="agendar" class="sec rays">
+<div id="agendar" class="sec" style="background:radial-gradient(ellipse at 50% 0%, rgba(59,130,255,0.22) 0%, transparent 70%)">
   <div class="tag">AGENDAR - QUADRADOS IGUAIS 100% CELULAR</div>
   <div class="h2">Agende em segundos</div>
-  <div style="display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:22px">
-    <div>
-      <div class="card" style="padding:18px">
-        <strong>Escolha o horário</strong>
-        <div class="grid" style="grid-template-columns:repeat(2,1fr);margin-top:14px" id="slots">
-          <div class="box" data-time="09:00"><b>09:00</b><small>Disponível</small></div>
-          <div class="box" data-time="10:00"><b>10:00</b><small>Disponível</small></div>
-          <div class="box" data-time="11:00"><b>11:00</b><small>Disponível</small></div>
-          <div class="box" data-time="14:00"><b>14:00</b><small>Disponível</small></div>
-          <div class="box" data-time="15:00"><b>15:00</b><small>Disponível</small></div>
-          <div class="box" data-time="16:00"><b>16:00</b><small>Disponível</small></div>
-          <div class="box" data-time="17:00"><b>17:00</b><small>Disponível</small></div>
-          <div class="box" data-time="18:00"><b>18:00</b><small>Disponível</small></div>
-        </div>
+  <div style="display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:24px">
+    <div class="card" style="padding:20px"><strong>Escolha o horário - Rua Milão 539</strong>
+      <div class="grid" style="grid-template-columns:repeat(2,1fr);margin-top:16px" id="slots">
+        <div class="cyber" data-time="09:00"><b>09:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="10:00"><b>10:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="11:00"><b>11:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="14:00"><b>14:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="15:00"><b>15:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="16:00"><b>16:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="17:00"><b>17:00</b><small>Disponível</small></div>
+        <div class="cyber" data-time="18:00"><b>18:00</b><small>Disponível</small></div>
       </div>
     </div>
     <div class="card">
       <strong>Seus dados</strong>
       <input id="nome" class="input" placeholder="Seu nome completo">
-      <input id="zap" class="input" placeholder="WhatsApp (11) 9XXXX-XXXX">
-      <input id="servico" class="input" placeholder="Serviço selecionado" readonly>
+      <input id="zap" class="input" placeholder="Seu WhatsApp">
+      <input id="servico" class="input" placeholder="Serviço" value="Corte + Barba - R$65" readonly>
       <input id="horario" class="input" placeholder="Horário selecionado" readonly>
-      <button id="btnConfirmar" class="btn-blue" style="width:100%;margin-top:14px;padding:15px">Confirmar e enviar no WhatsApp</button>
-      <small style="color:#5A6585;display:block;margin-top:10px;text-align:center">Salva automático no Supabase + abre WhatsApp</small>
+      <button id="btnConfirmar" class="btn-blue" style="width:100%;margin-top:16px;padding:16px">Confirmar na Rua Milão 539 →</button>
+      <small style="color:#7B8AB0;display:block;margin-top:12px;text-align:center;font-size:10px">Salva no Supabase + abre Zap 11 94484-7179</small>
     </div>
   </div>
 </div>
 
-<div class="sec rays">
-  <div class="tag">LOCAL - COM RAIOS AZUIS NO FUNDO PRETO</div>
-  <div class="h2">Onde estamos</div>
-  <div class="card" style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
-    <div>📍 <b>Silva Barbearia</b><br><span style="color:#9CA3AF">Rua das Tesouras, 123 - Nova Trieste<br>Jundiaí - SP<br><br>Seg a Sex: 08h às 18h<br>Sáb: 08h às 16h</span><br><br><button class="btn-blue" onclick="window.open('https://maps.google.com/?q=Jundiaí','_blank')">Ver no Maps</button></div>
-    <div style="background:#0A0E1C;border-radius:14px;min-height:180px;display:grid;place-items:center;color:#3A4A7A;border:1px solid var(--border)">Mapa do Google aqui - fundo com raios azuis</div>
+<div class="sec" style="padding-top:40px">
+  <div class="tag">LOCAL - COM ENDEREÇO REAL E MAPA CLICÁVEL</div>
+  <div class="h2">Rua Milão 539, Nova Trieste - Jarinu SP</div>
+  <div class="card" style="margin-top:22px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:22px">
+    <div>
+      <b style="font-size:20px">📍 Barbearia Silva - Anderson Barbeiro</b><br><br>
+      <span style="color:#9AA9CB;line-height:1.9;font-size:14px">
+        <b style="color:#fff">Endereço oficial do seu print:</b><br>
+        Rua Milão 539, Nova Trieste<br>
+        Jarinu - SP<br>
+        Quarta-feira: Somente com hora marcada<br><br>
+        <b style="color:#fff">Contato:</b><br>
+        WhatsApp: (11) 94484-7179<br>
+        Instagram: @_silva.barbearia_ (373 seguidores)<br>
+        Dono: @_aandersonjose_<br><br>
+        <b style="color:#fff">Categoria:</b><br>
+        Beleza, cosméticos e cuidados pessoais<br>
+        Conta comercial desde setembro de 2025
+      </span><br><br>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Milão+539+Nova+Trieste+Jarinu+SP" target="_blank" style="background:var(--blue);color:#fff;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:800;font-size:13px">📍 Abrir no Maps</a>
+        <a href="https://wa.me/5511944847179" target="_blank" style="background:#25D366;color:#fff;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:800;font-size:13px">WhatsApp</a>
+        <a href="https://instagram.com/_silva.barbearia_" target="_blank" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);color:#fff;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:800;font-size:13px">Instagram</a>
+      </div>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&query=Rua+Milão+539+Nova+Trieste+Jarinu+SP" target="_blank" style="background:radial-gradient(ellipse at center, rgba(59,130,255,0.30) 0%, #0D1840 70%);border-radius:18px;min-height:320px;display:grid;place-items:center;border:1px solid var(--border);text-decoration:none;overflow:hidden">
+      <iframe src="https://maps.google.com/maps?q=Rua%20Mil%C3%A3o%20539%20Nova%20Trieste%20Jarinu%20SP&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="320" style="border:0;pointer-events:none" loading="lazy"></iframe>
+    </a>
   </div>
 </div>
 
+<footer>
+  <div class="logo" style="justify-content:center;margin-bottom:14px"><div class="s">S</div> BARBEARIA SILVA</div>
+  <div style="color:#9AA9CB;font-size:13px;line-height:1.8">
+    📍 Rua Milão 539, Nova Trieste, Jarinu - SP<br>
+    WhatsApp: (11) 94484-7179 | Instagram: @_silva.barbearia_ | Anderson Barbeiro<br>
+  </div>
+  <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <a href="https://wa.me/5511944847179" target="_blank" style="background:#25D366;color:#fff;padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:800;font-size:12px">WhatsApp 11 94484-7179</a>
+    <a href="https://instagram.com/_silva.barbearia_" target="_blank" style="background:var(--blue);color:#fff;padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:800;font-size:12px">Instagram @_silva.barbearia_</a>
+    <a href="https://maps.google.com/?q=Rua+Milao+539+Nova+Trieste+Jarinu+SP" target="_blank" style="background:#fff;color:#0B1330;padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:800;font-size:12px">📍 Rua Milão 539 no Maps</a>
+  </div>
+  <div style="color:#5A6A90;font-size:10px;margin-top:18px;letter-spacing:1px">Conta comercial desde setembro de 2025 • 5 de mar. de 2026 • Beleza, cosméticos e cuidados pessoais</div>
+</footer>
+
+<a href="https://wa.me/5511944847179" target="_blank" style="position:fixed;bottom:22px;right:22px;width:58px;height:58px;background:#25D366;border-radius:50%;display:grid;place-items:center;font-size:28px;box-shadow:0 12px 35px rgba(0,0,0,0.5);z-index:99;text-decoration:none">💬</a>
+
 <script>
-// TROQUE AQUI SUAS CHAVES DO SUPABASE - do seu supabase.sql
+// TROQUE SUAS CHAVES DO SUPABASE AQUI
 const SUPABASE_URL = "SUA_URL_AQUI";
 const SUPABASE_KEY = "SUA_KEY_AQUI";
-let supabaseClient = null;
-try{ supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); }catch(e){ console.log("Coloque sua chave do Supabase") }
+let supabaseClient=null;
+try{ supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); }catch(e){}
 
-let selectedTime = ""; let selectedService = "Corte Máquina - R$40";
+let selTime="", selService="Corte + Barba";
 document.querySelectorAll('[data-time]').forEach(b=>{
   b.addEventListener('click', function(){
     document.querySelectorAll('[data-time]').forEach(x=>x.classList.remove('active'));
-    this.classList.add('active'); selectedTime = this.dataset.time;
-    document.getElementById('horario').value = selectedTime;
-    document.getElementById('nextSlot').innerText = "Selecionado: "+selectedTime;
+    this.classList.add('active'); selTime=this.dataset.time;
+    document.getElementById('horario').value=selTime;
+    document.getElementById('nextSlot').innerText="Selecionado: "+selTime+" - Rua Milão 539";
   })
 });
 document.querySelectorAll('[data-service]').forEach(b=>{
   b.addEventListener('click', function(){
     document.querySelectorAll('[data-service]').forEach(x=>x.classList.remove('active'));
-    this.classList.add('active'); selectedService = this.dataset.service.split('|')[0];
-    document.getElementById('servico').value = selectedService;
+    this.classList.add('active'); selService=this.dataset.service.split('|')[0];
+    document.getElementById('servico').value=selService;
   })
 });
-function updateClock(){
-  const now = new Date();
-  const el = document.getElementById('clock');
-  if(el) el.innerText = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-setInterval(updateClock,1000); updateClock();
+function tick(){const el=document.getElementById('clock'); if(el) el.innerText=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+setInterval(tick,1000); tick();
 
-document.getElementById('btnConfirmar').addEventListener('click', async ()=>{
-  const nome = document.getElementById('nome').value;
-  const zap = document.getElementById('zap').value;
-  if(!nome ||!zap ||!selectedTime){ alert("Preencha nome, WhatsApp e horário"); return; }
-  // Salva no Supabase
+document.getElementById('btnConfirmar').addEventListener('click', async()=>{
+  const nome=document.getElementById('nome').value;
+  const zap=document.getElementById('zap').value;
+  if(!nome||!zap||!selTime){ alert("Preencha nome, WhatsApp e horário"); return; }
   if(supabaseClient && SUPABASE_URL.includes('supabase')){
-    const {error} = await supabaseClient.from('agendamentos').insert([{nome, whatsapp:zap, servico:selectedService, horario:selectedTime, data:new Date().toISOString()}]);
-    if(error) console.log(error);
+    await supabaseClient.from('agendamentos').insert([{nome,whatsapp:zap,servico:selService,horario:selTime,data:new Date().toISOString(),endereco:"Rua Milão 539, Nova Trieste Jarinu"}]);
   }
-  const msg = `Olá! Sou ${nome} - Agendamento Silva: ${selectedService} às ${selectedTime}. Meu WhatsApp: ${zap}`;
-  window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`,'_blank');
+  const msg=`Olá Barbearia Silva! Sou ${nome} - Quero agendar ${selService} às ${selTime} na Rua Milão 539, Nova Trieste Jarinu. Meu zap: ${zap} - Vi no site @_silva.barbearia_`;
+  window.open(`https://wa.me/5511944847179?text=${encodeURIComponent(msg)}`,'_blank');
 });
-
-// Bloquear horários já agendados (exemplo - busca do Supabase)
-async function loadBooked(){
-  if(!supabaseClient ||!SUPABASE_URL.includes('supabase')) return;
-  const today = new Date().toISOString().split('T')[0];
-  const {data} = await supabaseClient.from('agendamentos').select('horario').eq('data',today);
-  if(data){ data.forEach(d=>{ document.querySelectorAll(`[data-time="${d.horario}"]`).forEach(el=>el.classList.add('disabled')) }) }
-}
-loadBooked();
 </script>
 </body>
 </html>
