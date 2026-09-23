@@ -3,171 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barbearia Silva | Agenda Inteligente</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>SILVA - Barbearia</title>
 <style>
-:root{--bg:#06080f;--blue:#2a8bff;--blue2:#00d4ff;--card:#11141f;--border:rgba(42,139,255,0.2);--green:#00ff88}
+:root{--blue:#3B82F6;--bg:#06080F;--card:#0F111A}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(800px at 15% 5%, rgba(42,139,255,0.18), transparent),radial-gradient(600px at 85% 30%, rgba(0,212,255,0.12), transparent),linear-gradient(180deg,#06080f 0%,#0a0e1f 100%)}
-.rays{position:fixed;inset:0;z-index:-1;opacity:0.7}
-.rays::after{content:"";position:absolute;inset:0;background:linear-gradient(108deg, transparent 45%, rgba(42,139,255,0.07) 50%, transparent 55%),linear-gradient(78deg, transparent 40%, rgba(0,212,255,0.06) 50%, transparent 60%)}
-nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(6,8,15,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.logo{display:flex;gap:10px;align-items:center;font-family:'Syne',sans-serif;font-weight:800}
-.logo i{width:36px;height:36px;background:var(--blue);display:grid;place-items:center;border-radius:10px}
-.menu{display:flex;gap:14px;font-size:12px}
-.menu a{color:#cbd5e1;text-decoration:none}
-.sobre{padding:36px 20px 20px}
-.badge{display:inline-flex;gap:8px;background:rgba(42,139,255,0.12);border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:11px;color:var(--blue2)}
-.dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-h1{font-family:'Syne',sans-serif;font-size:40px;line-height:0.95;margin:18px 0 12px;letter-spacing:-1px}
-h1 b{color:var(--blue)}
-.sub{color:#a0a8c0;font-size:14px;line-height:1.6;max-width:360px}
-.stats{display:flex;gap:10px;margin-top:18px}
-.stat{flex:1;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;text-align:center}
-.stat strong{font-size:20px;color:var(--blue2);display:block}
-.stat span{font-size:9px;color:#7a8198}
-.galeria{padding:22px 18px}
-.galeria h2,.servicos h2,.agendar h2,.local h2{font-family:'Syne',sans-serif;font-size:26px}
-.galeria p.small{color:#7a8198;font-size:12px;margin:6px 0 14px}
-.grid-cortes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card-corte{position:relative;border-radius:18px;overflow:hidden;height:200px;border:1px solid var(--border)}
-.card-corte img{width:100%;height:100%;object-fit:cover}
-.card-corte::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(6,8,15,0.9) 90%)}
-.card-corte .label{position:absolute;bottom:10px;left:10px;z-index:2}
-.card-corte .label small{font-size:8px;color:var(--blue2);letter-spacing:1.5px}
-.card-corte .label p{font-size:13px;font-weight:700}
-.plasma{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue2),transparent)}
-.servicos{padding:26px 18px;background:linear-gradient(180deg,rgba(42,139,255,0.05),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.list-serv{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.item-serv{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;cursor:pointer}
-.item-serv.active{border-color:var(--blue);box-shadow:0 0 18px rgba(42,139,255,0.2)}
-.item-serv div b{font-size:14px}
-.item-serv div small{color:#7a8198;font-size:11px;display:block;margin-top:2px}
-.item-serv strong{color:var(--blue2)}
-.agendar{padding:26px 18px}
-.desc{color:#7a8198;font-size:12px;margin:6px 0 16px}
-.grid-agendar{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.box-time{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;text-align:center;cursor:pointer;transition:0.2s}
-.box-time .hora{font-family:'Syne',sans-serif;font-size:18px}
-.box-time .disp{font-size:10px;margin-top:4px;color:var(--green)}
-.box-time.ocupado{opacity:0.35;pointer-events:none}
-.box-time.ocupado .disp{color:#ff4d4d}
-.box-time.sel{border-color:var(--blue);background:rgba(42,139,255,0.15);transform:scale(1.02);box-shadow:0 0 20px rgba(42,139,255,0.3)}
-.form-ag{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;display:none}
-.form-ag.show{display:block}
-.form-ag input{width:100%;background:#0a0d18;border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:#fff;margin-top:10px;font-size:14px}
-.form-ag label{font-size:12px;color:#a0a8c0}
-.btn-full{margin-top:14px;width:100%;background:var(--blue);color:#fff;border:none;padding:16px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 0 20px rgba(42,139,255,0.35)}
-.lista-ag{margin-top:16px;display:flex;flex-direction:column;gap:8px}
-.item-ag{background:rgba(42,139,255,0.08);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
-.local{padding:26px 18px;background:#0a0d18;border-top:1px solid var(--border)}
-.map{margin-top:12px;height:160px;border-radius:16px;border:1px solid var(--border);background:radial-gradient(300px at 50% 20%, rgba(42,139,255,0.25), #0e1220);display:grid;place-items:center;color:var(--blue2);font-size:12px;text-align:center}
-footer{padding:18px;text-align:center;color:#4a5068;font-size:10px}
+body{background:var(--bg);color:#fff;font-family:Inter, sans-serif;overflow-x:hidden}
+.hero{position:relative;min-height:90vh;padding:24px;background:radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.15) 0%, transparent 60%), linear-gradient(#06080F,#06080F);display:flex;flex-direction:column}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;letter-spacing:2px}
+.btn-blue{background:var(--blue);color:#fff;padding:12px 24px;border-radius:999px;border:none;font-weight:600}
+.hero-content{margin-top:60px;max-width:500px}
+.hero h1{font-size:48px;line-height:1;font-weight:900}
+.hero h1 span{color:var(--blue)}
+.card-dark{background:var(--card);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:20px;margin-top:40px}
+.section{padding:60px 20px;max-width:1100px;margin:0 auto}
+.badge{color:var(--blue);font-size:12px;letter-spacing:3px;font-weight:700;margin-bottom:10px}
+.h2{font-size:32px;font-weight:900;margin-bottom:16px}
+.grid-igual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid-igual{grid-template-columns:1fr 1fr}}
+.item{aspect-ratio:1/1;background:var(--card);border:1px solid rgba(255,255,255,0.08);border-radius:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px;text-align:center}
+.item.active{border-color:var(--blue);box-shadow:0 0 30px rgba(59,130,246,0.25)}
+.plasma{position:relative;overflow:hidden}
+.plasma::after{content:'';position:absolute;inset:-2px;background:linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);animation:shine 2.5s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.rays{position:relative}
+.rays::before{content:'';position:absolute;top:-100px;left:50%;width:200%;height:400px;background:radial-gradient(ellipse at center, rgba(59,130,246,0.18) 0%, transparent 70%);transform:translateX(-50%);pointer-events:none}
 </style>
 </head>
 <body>
-<div class="rays"></div>
-<nav>
-<div class="logo"><i>✂</i> SILVA BARBER</div>
-<div class="menu"><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#agendar">Agendar</a></div>
-</nav>
-<section id="sobre" class="sobre">
-<div class="badge"><span class="dot"></span> ABERTO AGORA • 08:00 - 19:00</div>
-<h1>Mais que corte,<b>é precisão.</b></h1>
-<p class="sub">Aqui cada cliente sai com autoestima recarregada. Atendimento VIP, acabamento cirúrgico e aquele detalhe que só a Silva entrega. 847+ clientes satisfeitos em Nova Trieste.</p>
-<div class="stats">
-<div class="stat"><strong>4.9★</strong><span>AVALIAÇÃO</span></div>
-<div class="stat"><strong>847</strong><span>CLIENTES</span></div>
-<div class="stat"><strong>5 ANOS</strong><span>EXPERIÊNCIA</span></div>
+<div class="hero rays">
+  <div class="nav"><div class="logo">SILVA</div><button class="btn-blue">Agendar</button></div>
+  <div class="hero-content">
+    <h1>Seu estilo<br>começa na<br><span>cadeira</span></h1>
+    <p style="margin-top:20px;color:#9CA3AF">Mais que um corte, uma experiência. Tradição e estilo se encontram.</p>
+    <button class="btn-blue" style="margin-top:24px">Agendar horário</button>
+    <div class="card-dark"><small style="color:var(--blue)">01</small><br><strong>Agenda Inteligente</strong><p style="color:#9CA3AF;font-size:14px;margin-top:6px">Sistema profissional integrado</p></div>
+  </div>
 </div>
+
+<!-- SOBRE - ADICIONADO NO COMEÇO COMO PEDIU -->
+<section class="section">
+  <div class="badge">SOBRE NÓS</div>
+  <div class="h2">Qualidade que você vê no espelho, confiança que você sente o dia todo</div>
+  <p style="color:#9CA3AF;line-height:1.6">Não é só corte. É acabamento impecável, atendimento de verdade e pontualidade. Aqui cada cliente sai com o estilo alinhado, sem pressa, com técnica.</p>
 </section>
-<section class="galeria">
-<h2>Cortes Plasma</h2>
-<p class="small">Efeito futurista • Precisão robótica • Feito pra impressionar</p>
-<div class="grid-cortes">
-<div class="card-corte"><div class="plasma"></div><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500"><div class="label"><small>PLASMA FADE</small><p>Low Fade Neon</p></div></div>
-<div class="card-corte"><div class="plasma"></div><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500"><div class="label"><small>ROBOT LINE</small><p>Razor Design</p></div></div>
-<div class="card-corte"><div class="plasma"></div><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500"><div class="label"><small>CYBER CUT</small><p>High Precision</p></div></div>
-<div class="card-corte"><div class="plasma"></div><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500"><div class="label"><small>BLUE BEAM</small><p>Degradê Infinito</p></div></div>
-</div>
+
+<!-- CORTES COM PLASMA LEVE -->
+<section class="section">
+  <div class="badge">CORTES</div>
+  <div class="h2">Estilos em destaque</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+    <div class="item plasma"><strong>Fade</strong></div>
+    <div class="item plasma"><strong>Social</strong></div>
+    <div class="item plasma"><strong>Barba</strong></div>
+  </div>
 </section>
-<section id="servicos" class="servicos">
-<h2>Serviços</h2>
-<div class="list-serv" id="listServ">
-<div class="item-serv active" data-serv="Corte Premium - R$45"><div><b>Corte Premium</b><small>45min • Máquina + tesoura</small></div><strong>R$45</strong></div>
-<div class="item-serv" data-serv="Barba Robótica - R$35"><div><b>Barba Robótica</b><small>30min • Toalha quente</small></div><strong>R$35</strong></div>
-<div class="item-serv" data-serv="Combo Silva - R$70"><div><b>Combo Silva</b><small>70min • Corte + barba + sobrancelha</small></div><strong>R$70</strong></div>
-</div>
+
+<!-- SERVIÇOS -->
+<section class="section">
+  <div class="badge">SERVIÇOS</div>
+  <div class="h2">Nossos serviços</div>
+  <div class="grid-igual">
+    <div class="item"><span>💈</span><strong>Corte</strong><small>R$ 40</small></div>
+    <div class="item"><span>✂️</span><strong>Barba</strong><small>R$ 30</small></div>
+    <div class="item"><span>🔥</span><strong>Corte + Barba</strong><small>R$ 65</small></div>
+    <div class="item"><span>✨</span><strong>Acabamento</strong><small>R$ 15</small></div>
+  </div>
 </section>
-<section id="agendar" class="agendar">
-<h2>Agendar</h2>
-<p class="desc">Quadrados iguais • Toque pra reservar • 100% celular</p>
-<div class="grid-agendar" id="gridHorarios">
-<div class="box-time" data-hora="09:00"><div class="hora">09:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="10:00"><div class="hora">10:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="11:00"><div class="hora">11:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="13:00"><div class="hora">13:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="14:00"><div class="hora">14:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="15:00"><div class="hora">15:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="16:00"><div class="hora">16:00</div><div class="disp">● DISPONÍVEL</div></div>
-<div class="box-time" data-hora="17:00"><div class="hora">17:00</div><div class="disp">● DISPONÍVEL</div></div>
-</div>
-<div class="form-ag" id="formAg">
-<label>Horário: <b id="horaSel">-</b> | Serviço: <b id="servSel">Corte Premium - R$45</b></label>
-<input id="nome" placeholder="Seu nome">
-<input id="whats" placeholder="Seu WhatsApp (opcional)">
-<button class="btn-full" id="btnConfirm">CONFIRMAR NO WHATSAPP →</button>
-</div>
-<div class="lista-ag" id="listaAg"></div>
+
+<!-- AGENDAR QUADRADOS IGUAIS 100% CELULAR -->
+<section class="section">
+  <div class="badge">AGENDAR</div>
+  <div class="h2">Escolha seu horário</div>
+  <div class="grid-igual">
+    <div class="item active"><strong>09:00</strong><small>Disponível</small></div>
+    <div class="item"><strong>10:00</strong><small>Disponível</small></div>
+    <div class="item"><strong>11:00</strong><small>Disponível</small></div>
+    <div class="item"><strong>14:00</strong><small>Disponível</small></div>
+  </div>
 </section>
-<section class="local">
-<h2>Local</h2>
-<p>Rua Nova Trieste, 123<br>Jardim Primavera - Jarinú SP<br>08:00 às 19:00 • Seg a Sáb</p>
-<div class="map">📍 Fundo preto com<br>raios azuis<br><small>Google Maps em breve</small></div>
+
+<!-- LOCAL COM RAIOS -->
+<section class="section rays">
+  <div class="badge">LOCAL</div>
+  <div class="h2">Onde estamos</div>
+  <div class="card-dark">📍 Rua da Barbearia, 123 - Centro<br><small style="color:#9CA3AF">Seg a Sáb 09h às 20h</small></div>
 </section>
-<footer>BARBEARIA SILVA • 2026 • FEITO COM ⚡ PLASMA</footer>
-<script>
-let servicoSel="Corte Premium - R$45";let horaSel=null;
-const grid=document.getElementById('gridHorarios');const form=document.getElementById('formAg');
-const horaEl=document.getElementById('horaSel');const servEl=document.getElementById('servSel');
-const lista=document.getElementById('listaAg');const STORAGE_KEY='silva_agendamentos_v2';
-function loadAg(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch{return[]}}
-function saveAg(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr))}
-function renderAg(){
-const ags=loadAg();
-document.querySelectorAll('.box-time').forEach(b=>{
-b.classList.remove('ocupado');b.querySelector('.disp').textContent='● DISPONÍVEL';b.querySelector('.disp').style.color='var(--green)';
-const h=b.dataset.hora;if(ags.find(a=>a.hora===h)){b.classList.add('ocupado');b.querySelector('.disp').textContent='● OCUPADO';b.querySelector('.disp').style.color='#ff4d4d';}
-});
-lista.innerHTML=ags.length?'<small style="color:#7a8198;font-size:11px">AGENDAMENTOS DE HOJE</small>':'';
-ags.forEach(a=>{
-const div=document.createElement('div');div.className='item-ag';
-div.innerHTML=`<span><b>${a.hora}</b> - ${a.nome} <small style="color:#7a8198">${a.servico}</small></span><span style="cursor:pointer;color:#ff4d4d" onclick="remover('${a.hora}')">✕</span>`;
-lista.appendChild(div);
-});
-}
-window.remover=(hora)=>{let ags=loadAg().filter(a=>a.hora!==hora);saveAg(ags);renderAg();if(horaSel===hora){horaSel=null;form.classList.remove('show');document.querySelectorAll('.box-time').forEach(b=>b.classList.remove('sel'));}}
-document.querySelectorAll('.item-serv').forEach(el=>{
-el.addEventListener('click',()=>{
-document.querySelectorAll('.item-serv').forEach(x=>x.classList.remove('active'));el.classList.add('active');servicoSel=el.dataset.serv;servEl.textContent=servicoSel;
-});
-});
-grid.addEventListener('click',e=>{
-const box=e.target.closest('.box-time');if(!box||box.classList.contains('ocupado'))return;
-document.querySelectorAll('.box-time').forEach(b=>b.classList.remove('sel'));box.classList.add('sel');horaSel=box.dataset.hora;horaEl.textContent=horaSel;servEl.textContent=servicoSel;form.classList.add('show');form.scrollIntoView({behavior:'smooth',block:'center'});
-});
-document.getElementById('btnConfirm').addEventListener('click',()=>{
-const nome=document.getElementById('nome').value.trim();if(!nome){alert('Digite seu nome');return;}
-if(!horaSel){alert('Escolha um horário');return;}
-const whats=document.getElementById('whats').value.trim();let ags=loadAg();
-if(ags.find(a=>a.hora===horaSel)){alert('Esse horário acabou de ser ocupado!');renderAg();return;}
-ags.push({hora:horaSel,nome,servico:servicoSel,whats,data:new Date().toISOString()});saveAg(ags);renderAg();
-const msg=`Olá Silva! Quero agendar: ${servicoSel} às ${horaSel} - Nome: ${nome}`;const url=`https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`;window.open(url,'_blank');
-document.getElementById('nome').value='';document.getElementById('whats').value='';form.classList.remove('show');horaSel=null;document.querySelectorAll('.box-time').forEach(b=>b.classList.remove('sel'));
-});
-renderAg();
-</script>
 </body>
 </html>
